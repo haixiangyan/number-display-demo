@@ -11,7 +11,7 @@ const getRandomNumber = (min: number, max: number) => {
 // 2. 滚动到 7 时，div 就要垂直移动到 7 * height 个单位
 function App() {
   const [time, setTime] = useState<number>(Date.now().valueOf());
-  const [numberString, setNumberString] = useState<string>('0.123');
+  const [numberString, setNumberString] = useState<string>('123');
 
   useEffect(() => {
     setInterval(() => {
@@ -23,15 +23,15 @@ function App() {
     return dayjs(time).format('HH:mm:ss');
   }, [time]);
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setNumberString(getRandomNumber(100, 999).toString());
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    setInterval(() => {
+      setNumberString(getRandomNumber(100, 999).toString());
+    }, 2000);
+  }, []);
 
   return (
     <div className={styles.app}>
-      <NumberDisplay numberString={timeStr} />
+      <NumberDisplay numberString={numberString} />
     </div>
   );
 }

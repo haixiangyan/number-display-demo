@@ -14,12 +14,15 @@ const NumberDisplay: FC<Props> = (props) => {
   return (
     <div className={styles.numberDisplay}>
       {/* ['1', '2', '3']*/}
-      {numberString.split('').map(digitStr => (
+      {numberString.split('').map((digitStr, index) => (
         <div className={styles.digitWrapper}>
           {
             digitRegexp.test(digitStr) ? (
               // 展示数字
-              <span className={styles.digitList} style={{ transform: `translate(-50%, ${-Number(digitStr) * 32}px)` }}>
+              <span className={styles.digitList} style={{
+                transform: `translate(-50%, ${-Number(digitStr) * 32}px)`,
+                transitionDelay: `${index * 100}ms`
+              }}>
                 {digits.map(digit => (
                   <span className={styles.digit} key={digit}>{digit}</span>
                 ))}
